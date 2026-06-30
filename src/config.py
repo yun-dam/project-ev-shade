@@ -37,5 +37,23 @@ MODEL_FALLBACK = os.getenv("GEMINI_MODEL_FALLBACK", "gemini-2.5-pro")
 CONCURRENCY = int(os.getenv("CONCURRENCY", "12"))
 MAX_RETRIES = 4
 
+# --- Google Maps Platform (ground-level image retrieval) --------------------
+# SEPARATE from the Vertex AI ADC above: this is an API key for the Places API
+# (New) + Street View Static API. Enable both on the key in the Cloud console.
+MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY", "")
+
+GROUND_IMAGES_DIR = OUTPUT_DIR / "ground_images"
+
+# Nearby Search: strict proximity so we only match the charger at the coordinate.
+NEARBY_RADIUS_M = float(os.getenv("NEARBY_RADIUS_M", "20.0"))
+# Place Photos: cap resolution to control bandwidth/storage.
+PHOTO_MAX_PX = int(os.getenv("PHOTO_MAX_PX", "1600"))
+# Place Photos: how many photos to pull per site (1st may not show the charger,
+# so grabbing 2-3 gives the VLM more candidates).
+PHOTO_MAX_COUNT = int(os.getenv("PHOTO_MAX_COUNT", "3"))
+# Street View Static: ambient roadside capture parameters.
+STREETVIEW_SIZE = os.getenv("STREETVIEW_SIZE", "640x480")
+STREETVIEW_FOV = int(os.getenv("STREETVIEW_FOV", "90"))
+
 # --- Taxonomy ---------------------------------------------------------------
 CLASSES = ["no_shade", "shade_structure", "shade_solar_pv", "in_garage", "uncertain"]

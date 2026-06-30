@@ -6,6 +6,7 @@ pyarrow==24.0.0
 pillow==12.2.0
 tqdm==4.67.3
 python-dotenv==1.2.2
+requests==2.32.3  # ground-level image retrieval (src/retrieve_ground.py)
 
 # NOTE: the gold-set labeling app (gold/label_app.py) uses only the Python standard
 # library, so a labmate can label WITHOUT any of the above except a Python 3.x install.

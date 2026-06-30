@@ -1,0 +1,21 @@
+# Secrets / local env
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Large data (not version-controlled)
+data-ev/
+data-ev.zip
+
+# Generated outputs / images (regenerable)
+outputs/
+gold/*.html
+
+# Derived data files (not version-controlled)
+afdc_dcfc_sites_with_google_images.csv
+afdc_dcfc_sites_with_labels.csv
+ground_labels.csv
